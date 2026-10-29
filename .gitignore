@@ -1,0 +1,8 @@
+**/target/
+**/.DS_Store
+.idea/
+*.iml
+.lan-bricks/
+logs/
+*.log
+dist/

@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="LAN Bricks" type="Application" factoryName="Application">
+        <option name="MAIN_CLASS_NAME" value="game.bricks.bootstrap.Main" />
+        <module name="lan-bricks" />
+        <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+        <method v="2"><option name="Make" enabled="true" /></method>
+    </configuration>
+</component>
