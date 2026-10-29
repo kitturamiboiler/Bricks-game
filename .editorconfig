@@ -10,3 +10,26 @@ indent_size = 4
 
 [*.{xml,yml,yaml}]
 indent_size = 4
+
+[*.java]
+max_line_length = 120
+ij_continuation_indent_size = 4
+ij_java_keep_multiple_expressions_in_one_line = false
+ij_java_keep_simple_blocks_in_one_line = false
+ij_java_keep_simple_methods_in_one_line = false
+ij_java_keep_simple_lambdas_in_one_line = false
+ij_java_keep_simple_classes_in_one_line = false
+ij_java_keep_control_statement_in_one_line = false
+ij_java_call_parameters_wrap = chop_down_if_long
+ij_java_call_parameters_new_line_after_left_paren = true
+ij_java_call_parameters_right_paren_on_new_line = true
+ij_java_method_parameters_wrap = chop_down_if_long
+ij_java_method_parameters_new_line_after_left_paren = true
+ij_java_method_parameters_right_paren_on_new_line = true
+ij_java_align_multiline_parameters = false
+ij_java_align_multiline_parameters_in_calls = false
+ij_java_method_call_chain_wrap = normal
+ij_java_wrap_first_method_in_call_chain = true
+ij_java_blank_lines_around_method = 1
+ij_java_blank_lines_around_class = 1
+ij_java_blank_lines_after_class_header = 1

@@ -26,10 +26,12 @@ public final class DesktopApplication {
         log.info("Default LAN port: {} (opened only by user action)", config.port());
 
         if (smokeTest) {
-            Timer closeTimer = new Timer(1500, event -> {
+            Timer closeTimer = new Timer(
+                1500, event -> {
                 frame.dispose();
                 log.info("Swing smoke test completed");
-            });
+            }
+            );
 
             closeTimer.setRepeats(false);
             closeTimer.start();

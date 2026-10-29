@@ -1,6 +1,7 @@
 package game.bricks.domain.game;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,8 +13,10 @@ class BallTest {
         Ball thirty = new Ball(100, 100, 10, 240, 240);
         Ball sixty = new Ball(100, 100, 10, 240, 240);
 
-        for (int i = 0; i < 30; i++) thirty.move(1.0 / 30);
-        for (int i = 0; i < 60; i++) sixty.move(1.0 / 60);
+        for (int i = 0; i < 30; i++)
+            thirty.move(1.0 / 30);
+        for (int i = 0; i < 60; i++)
+            sixty.move(1.0 / 60);
 
         assertEquals(340, thirty.getX(), 1e-8);
         assertEquals(thirty.getX(), sixty.getX(), 1e-8);
@@ -89,7 +92,9 @@ class BallTest {
     @Test
     void stageSpeedIsCappedForDiscreteCollisionSteps() {
         Ball ball = new Ball(400, 300, 10, 240, -240);
-        for (int i = 0; i < 100; i++) ball.increaseSpeed();
+
+        for (int i = 0; i < 100; i++)
+            ball.increaseSpeed();
         assertEquals(900, Math.hypot(ball.getVelocityX(), ball.getVelocityY()), 1e-8);
     }
 

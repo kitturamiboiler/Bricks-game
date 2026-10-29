@@ -14,8 +14,8 @@ class DomainBoundaryTest {
     @Test
     void domainDoesNotImportUiNetworkingPersistenceOrOuterLayers() throws Exception {
         Pattern outerDependency = Pattern.compile(
-                "(?m)^import\\s+(?:static\\s+)?(?:javafx|javax\\.swing|java\\.awt|java\\.net|java\\.io|"
-                        + "java\\.nio\\.file|game\\.bricks\\.(?:ui|infrastructure|application|bootstrap))\\.");
+            "(?m)^import\\s+(?:static\\s+)?(?:javafx|javax\\.swing|java\\.awt|java\\.net|java\\.io|"
+                + "java\\.nio\\.file|game\\.bricks\\.(?:ui|infrastructure|application|bootstrap))\\.");
 
         assertTrue(outerDependency.matcher("import javax.swing.JPanel;").find());
         assertTrue(outerDependency.matcher("import javafx.scene.canvas.GraphicsContext;").find());

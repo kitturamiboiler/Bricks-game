@@ -1,6 +1,7 @@
 package game.bricks.domain.game;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,8 +24,11 @@ class PlayerBoardTest {
 
     @Test
     void losingLastLifeFreezesAllFurtherUpdates() {
-        PlayerBoard board = fixture(new Ball(100, 589, 10, 240, 240),
-                new BrickField(List.of(new Brick(20, 50, 60, 25))), 1);
+        PlayerBoard board = fixture(
+            new Ball(100, 589, 10, 240, 240),
+            new BrickField(List.of(new Brick(20, 50, 60, 25))),
+            1
+        );
         board.start();
         board.update(1, false, true);
 
@@ -45,8 +49,11 @@ class PlayerBoardTest {
 
     @Test
     void losingALifeServesInsideBoardAndKeepsSpeed() {
-        PlayerBoard board = fixture(new Ball(100, 589, 10, 264, 264),
-                new BrickField(List.of(new Brick(20, 50, 60, 25))), 3);
+        PlayerBoard board = fixture(
+            new Ball(100, 589, 10, 264, 264),
+            new BrickField(List.of(new Brick(20, 50, 60, 25))),
+            3
+        );
         board.start();
         board.update(1.0 / 120, false, false);
 
@@ -59,19 +66,23 @@ class PlayerBoardTest {
 
     @Test
     void clearingStageUsesBoardCenterAndPreservesIncreasedSpeed() {
-        PlayerBoard board = fixture(new Ball(400, 85, 10, 240, -240),
-                new BrickField(List.of(new Brick(350, 50, 100, 25))), 3);
+        PlayerBoard board = fixture(
+            new Ball(400, 85, 10, 240, -240),
+            new BrickField(List.of(new Brick(350, 50, 100, 25))),
+            3
+        );
         board.start();
         board.update(1.0 / 120, false, false);
 
         assertAll(
-                () -> assertEquals(2, board.getLevel()),
-                () -> assertEquals(600, board.getScore()),
-                () -> assertEquals(400, board.getBall().getX()),
-                () -> assertEquals(300, board.getBall().getY()),
-                () -> assertEquals(264, board.getBall().getVelocityX(), 1e-8),
-                () -> assertEquals(-264, board.getBall().getVelocityY(), 1e-8),
-                () -> assertEquals(70, board.getBrickField().getBricks().size())
+            () -> assertEquals(2, board.getLevel()),
+            () -> assertEquals(600, board.getScore()),
+            () -> assertEquals(400, board.getBall().getX()),
+            () -> assertEquals(300, board.getBall().getY()),
+            () -> assertEquals(264, board.getBall().getVelocityX(), 1e-8),
+            () -> assertEquals(-264, board.getBall().getVelocityY(), 1e-8),
+            () -> assertEquals(70, board.getBrickField().getBricks().size())
+
         );
     }
 
@@ -82,8 +93,10 @@ class PlayerBoardTest {
         thirty.start();
         sixty.start();
 
-        for (int i = 0; i < 30; i++) thirty.update(1.0 / 30, false, true);
-        for (int i = 0; i < 60; i++) sixty.update(1.0 / 60, false, true);
+        for (int i = 0; i < 30; i++)
+            thirty.update(1.0 / 30, false, true);
+        for (int i = 0; i < 60; i++)
+            sixty.update(1.0 / 60, false, true);
 
         assertEquals(thirty.getBall().getX(), sixty.getBall().getX(), 1e-8);
         assertEquals(thirty.getBall().getY(), sixty.getBall().getY(), 1e-8);
@@ -105,8 +118,11 @@ class PlayerBoardTest {
 
     @Test
     void restartRestoresNewGameAndRequiresStart() {
-        PlayerBoard board = fixture(new Ball(400, 85, 10, 240, -240),
-                new BrickField(List.of(new Brick(350, 50, 100, 25))), 3);
+        PlayerBoard board = fixture(
+            new Ball(400, 85, 10, 240, -240),
+            new BrickField(List.of(new Brick(350, 50, 100, 25))),
+            3
+        );
         board.start();
         board.update(1.0 / 120, false, false);
         board.restart();

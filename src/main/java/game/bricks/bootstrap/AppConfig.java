@@ -46,8 +46,13 @@ public record AppConfig(String title, int width, int height, int port, Path data
             properties.load(new InputStreamReader(stream, StandardCharsets.UTF_8));
         }
 
-        for (String key : List.of("game.title", "game.width", "game.height",
-                "network.port", "app.data-directory")) {
+        for (String key : List.of(
+            "game.title",
+            "game.width",
+            "game.height",
+            "network.port",
+            "app.data-directory"
+        )) {
             if (overrides.getProperty(key) != null) {
                 properties.setProperty(key, overrides.getProperty(key));
             }
@@ -64,15 +69,16 @@ public record AppConfig(String title, int width, int height, int port, Path data
         }
 
         Path dataDirectory = directory == null
-                ? Path.of(System.getProperty("user.home"), ".lan-bricks")
-                : Path.of(directory);
+            ? Path.of(System.getProperty("user.home"), ".lan-bricks")
+            : Path.of(directory);
 
         return new AppConfig(
-                properties.getProperty("game.title"),
-                integer(properties, "game.width"),
-                integer(properties, "game.height"),
-                integer(properties, "network.port"),
-                dataDirectory
+            properties.getProperty("game.title"),
+            integer(properties, "game.width"),
+            integer(properties, "game.height"),
+            integer(properties, "network.port"),
+            dataDirectory
+
         );
     }
 

@@ -9,8 +9,8 @@ public final class Paddle {
 
     public Paddle(double x, double y, double width, double height) {
         if (!Double.isFinite(x) || !Double.isFinite(y)
-                || !Double.isFinite(width) || width <= 0
-                || !Double.isFinite(height) || height <= 0) {
+            || !Double.isFinite(width) || width <= 0
+            || !Double.isFinite(height) || height <= 0) {
             throw new IllegalArgumentException("Paddle coordinates must be finite and size must be positive");
         }
 

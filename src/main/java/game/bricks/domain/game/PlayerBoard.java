@@ -13,7 +13,11 @@ public final class PlayerBoard {
     private int startingLives;
     private Difficulty difficulty = Difficulty.NORMAL;
     private final List<Hit> hits = new ArrayList<>();
-    record Hit(double x, double y) {}
+
+    record Hit(double x, double y) {
+
+    }
+
     private final Paddle paddle;
     private Ball ball;
     private BrickField brickField;
@@ -24,9 +28,14 @@ public final class PlayerBoard {
     private double accumulatedSeconds;
 
     public PlayerBoard(double width, double height) {
-        this(width, height, new Ball(width / 2, height / 2, 10, 240, -240),
-                new Paddle((width - 100) / 2, height - 30, 100, 12),
-                BrickField.create(width, 1), 3);
+        this(
+            width,
+            height,
+            new Ball(width / 2, height / 2, 10, 240, -240),
+            new Paddle((width - 100) / 2, height - 30, 100, 12),
+            BrickField.create(width, 1),
+            3
+        );
     }
 
     public PlayerBoard(double width, double height, Difficulty difficulty) {
@@ -39,10 +48,14 @@ public final class PlayerBoard {
         paddle.center(width);
     }
 
-    void paddleScale(double scale) { paddle.resize(100 * difficulty.paddle * scale, width); }
+    void paddleScale(double scale) {
+        paddle.resize(100 * difficulty.paddle * scale, width);
+    }
+
     List<Hit> drainHits() {
         List<Hit> result = List.copyOf(hits);
         hits.clear();
+
         return result;
     }
 

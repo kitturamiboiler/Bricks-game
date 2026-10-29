@@ -11,8 +11,8 @@ public final class Ball {
 
     public Ball(double x, double y, double radius, double velocityX, double velocityY) {
         if (!Double.isFinite(x) || !Double.isFinite(y)
-                || !Double.isFinite(radius) || radius <= 0
-                || !Double.isFinite(velocityX) || !Double.isFinite(velocityY)) {
+            || !Double.isFinite(radius) || radius <= 0
+            || !Double.isFinite(velocityX) || !Double.isFinite(velocityY)) {
             throw new IllegalArgumentException("Ball coordinates and velocity must be finite; radius must be positive");
         }
 
@@ -86,12 +86,13 @@ public final class Ball {
 
     boolean bounceOff(Paddle paddle) {
         if (velocityY <= 0 || previousY + radius > paddle.getY()
-                || !intersects(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight())) {
+            || !intersects(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight())) {
             return false;
         }
 
         y = paddle.getY() - radius;
         velocityY = -Math.abs(velocityY);
+
         return true;
     }
 

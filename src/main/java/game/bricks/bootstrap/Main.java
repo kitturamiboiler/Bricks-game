@@ -28,6 +28,7 @@ public final class Main {
         } catch (IOException | IllegalArgumentException e) {
             log.error("Invalid application configuration: {}", e.getMessage());
             System.exit(1);
+
             return;
         }
 
@@ -37,7 +38,14 @@ public final class Main {
         SwingUtilities.invokeLater(() -> {
             RankingService ranking = new RankingService(new FileRankingRepository(config.dataDirectory()));
             GameSessionService session = new GameSessionService(ranking, new TcpConnectionFactory());
-            MainFrame frame = new MainFrame(config.title(), config.width(), config.height(), config.port(), session, ranking);
+            MainFrame frame = new MainFrame(
+                config.title(),
+                config.width(),
+                config.height(),
+                config.port(),
+                session,
+                ranking
+            );
             DesktopApplication application = new DesktopApplication(config, frame);
 
             application.start(smokeTest);

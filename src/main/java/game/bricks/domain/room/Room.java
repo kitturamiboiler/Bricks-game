@@ -1,9 +1,11 @@
 package game.bricks.domain.room;
 
 import game.bricks.domain.game.Difficulty;
+
 import java.util.Objects;
 
 public final class Room {
+
     private final PlayerId host;
     private PlayerId guest;
     private final Difficulty difficulty;
@@ -17,6 +19,7 @@ public final class Room {
 
     public void join(String id) {
         PlayerId candidate = new PlayerId(id);
+
         if (guest != null)
             throw new IllegalStateException("The room is full.");
         if (host.value().equalsIgnoreCase(candidate.value()))
@@ -25,16 +28,40 @@ public final class Room {
     }
 
     public void ready(int player, boolean ready) {
-        if (player == 0) hostReady = ready;
-        else if (player == 1 && guest != null) guestReady = ready;
-        else throw new IllegalArgumentException("Unknown player.");
+        if (player == 0)
+            hostReady = ready;
+        else if (player == 1 && guest != null)
+            guestReady = ready;
+        else
+            throw new IllegalArgumentException("Unknown player.");
     }
 
-    public boolean canStart() { return guest != null && hostReady && guestReady; }
-    public void resetReady() { hostReady = false; guestReady = false; }
-    public String host() { return host.value(); }
-    public String guest() { return guest == null ? "" : guest.value(); }
-    public Difficulty difficulty() { return difficulty; }
-    public boolean hostReady() { return hostReady; }
-    public boolean guestReady() { return guestReady; }
+    public boolean canStart() {
+        return guest != null && hostReady && guestReady;
+    }
+
+    public void resetReady() {
+        hostReady = false;
+        guestReady = false;
+    }
+
+    public String host() {
+        return host.value();
+    }
+
+    public String guest() {
+        return guest == null ? "" : guest.value();
+    }
+
+    public Difficulty difficulty() {
+        return difficulty;
+    }
+
+    public boolean hostReady() {
+        return hostReady;
+    }
+
+    public boolean guestReady() {
+        return guestReady;
+    }
 }
